@@ -1,17 +1,12 @@
 import {Router} from 'express'
+import linksController from '../controllers/links'
 
 const router = Router()
 
-router.post('/links', (req, res) => {
-    return res.send('essa é a rota POST')
-})
+router.post('/links', linksController.postLink)
 
-router.get('/links/:code', (req, res) => {
-    return res.send('Essa é a rota GET')
-})
+router.get('/links/:code', linksController.getLink)
 
-router.get('/links/:code/stats', (req, res) => {
-    res.send('Essa é a rota Stats')
-})
+router.get('/links/:code/stats', linksController.hitLink)
 
 export default router

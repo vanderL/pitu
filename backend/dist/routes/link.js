@@ -1,14 +1,12 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
+const links_1 = __importDefault(require("../controllers/links"));
 const router = express_1.Router();
-router.post('/links', (req, res) => {
-    return res.send('essa é a rota POST');
-});
-router.get('/links/:code', (req, res) => {
-    return res.send('Essa é a rota GET');
-});
-router.get('/links/:code/stats', (req, res) => {
-    res.send('Essa é a rota Stats');
-});
+router.post('/links', links_1.default.postLink);
+router.get('/links/:code', links_1.default.getLink);
+router.get('/links/:code/stats', links_1.default.hitLink);
 exports.default = router;
