@@ -4,3 +4,4 @@ export type Link = {
     code?: string,
     hits?: number
 }
+//schemae e suas regras
