@@ -34,25 +34,28 @@ function postLink(req, res) {
     });
 }
 function getLink(req, res) {
-    /*const code = req.params.code as string
-    const link = links.find(item => item.code === code)
-    if(!link){
-        res.sendStatus(404)
-    } else {
-        res.json(link)
-    }
-    res.send('getLink')*/
+    return __awaiter(this, void 0, void 0, function* () {
+        const code = req.params.code;
+        const link = yield linksRepository_1.default.findByCode(code);
+        if (!link) {
+            res.sendStatus(404);
+        }
+        else {
+            res.json(link);
+        }
+    });
 }
 function hitLink(req, res) {
-    /* const code = req.params.code as string
-     const index = links.findIndex(item => item.code === code)
- 
-     if(index === -1){
-         res.sendStatus(404)
-     } else {
-         links[index].hits!++
-         res.json(links[index])
-     }*/
+    return __awaiter(this, void 0, void 0, function* () {
+        const code = req.params.code;
+        const link = yield linksRepository_1.default.hit(code);
+        if (!link) {
+            res.sendStatus(404);
+        }
+        else {
+            res.json(link);
+        }
+    });
 }
 exports.default = {
     postLink,
