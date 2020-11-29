@@ -7,6 +7,6 @@ const express_1 = require("express");
 const links_1 = __importDefault(require("../controllers/links"));
 const router = express_1.Router();
 router.post('/links', links_1.default.postLink);
-router.get('/links/:code', links_1.default.getLink);
-router.get('/links/:code/stats', links_1.default.hitLink);
+router.get('/links/:code', links_1.default.hitLink);
+router.get('/links/:code/stats', links_1.default.getLink);
 exports.default = router;

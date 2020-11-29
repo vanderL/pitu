@@ -1,8 +1,7 @@
 import {Request, Response} from 'express'
 import { Link } from '../models/link'
-
-const links : Link[] = []
-let proxId = 1
+import linksRepository from '../models/linksRepository'
+import linksRespository from '../models/linksRepository'
 
 function generateCode(){
     let text = ''
@@ -13,30 +12,31 @@ function generateCode(){
     return text
 }
 
-
-function postLink(req: Request, res: Response) {
+async function postLink(req: Request, res: Response) {
     const link = req.body as Link
-    link.id = proxId++
     link.code = generateCode()
     link.hits = 0
-    links.push(link)
-
+    const result = await linksRepository.add(link)
+    if(!result.id) return res.sendStatus(400)
+    
+    link.id = result.id
+    
     res.status(201).json(link)
 }
 
 function getLink(req: Request, res: Response){
-    const code = req.params.code as string
+    /*const code = req.params.code as string
     const link = links.find(item => item.code === code)
     if(!link){
         res.sendStatus(404)
     } else {
         res.json(link)
     }
-    res.send('getLink')
+    res.send('getLink')*/
 }
 
 function hitLink(req: Request, res: Response) {
-    const code = req.params.code as string
+   /* const code = req.params.code as string
     const index = links.findIndex(item => item.code === code)
 
     if(index === -1){
@@ -44,7 +44,7 @@ function hitLink(req: Request, res: Response) {
     } else {
         links[index].hits!++
         res.json(links[index])
-    }
+    }*/
 }
 
 export default {
