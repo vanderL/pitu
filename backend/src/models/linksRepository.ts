@@ -14,7 +14,7 @@ async function hit(code: string){
     if(!link) return null
 
     link.hits!++
-    await link.save
+    await link.save()
     return link
 }
 

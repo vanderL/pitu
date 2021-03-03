@@ -7,5 +7,5 @@ const app_1 = __importDefault(require("./app"));
 const database_1 = __importDefault(require("./database"));
 database_1.default.sync();
 console.log('Ha Ha Welcome to database my Lord, running at 3306');
-app_1.default.listen(3000);
+app_1.default.listen(3001);
 console.log('Good night my own! I am running at 3000');

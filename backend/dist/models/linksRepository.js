@@ -25,7 +25,7 @@ function hit(code) {
         if (!link)
             return null;
         link.hits++;
-        yield link.save;
+        yield link.save();
         return link;
     });
 }
