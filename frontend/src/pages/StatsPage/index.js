@@ -30,7 +30,7 @@ class StatsPage extends React.Component {
             const service = new ShortenerService()
             const shortenedUrl = await service.getStats(code)
 
-            const parsedDate = parseISO(shortenedUrl.updated)
+            const parsedDate = parseISO(shortenedUrl.updatedAt)
             const currentDate = new Date()
 
             const relativeDate = formatRelative(parsedDate, currentDate, {
